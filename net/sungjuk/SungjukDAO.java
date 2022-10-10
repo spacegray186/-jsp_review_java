@@ -128,8 +128,10 @@ public class SungjukDAO { //Data Access Object
             sql.append(" SELECT sno, uname, kor, eng, mat, aver, addr, wdate ");
             sql.append(" FROM sungjuk ");
             sql.append(" WHERE sno=? ");            
+            
             pstmt=con.prepareStatement(sql.toString());
             pstmt.setInt(1, sno);            
+            
             rs=pstmt.executeQuery();
             if(rs.next()) {
                 dto=new SungjukDTO();
@@ -177,18 +179,33 @@ public class SungjukDAO { //Data Access Object
     }//delete() end
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+	public int updateProc(SungjukDTO dto) {
+		int cnt=0;
+        try {
+            con=dbopen.getConnection();
+            
+            sql=new StringBuilder();
+            sql.append(" UPDATE sungjuk ");
+    	    sql.append(" SET uname=?, kor=?, eng=?, mat=?, aver=?, addr=? ");
+    	    sql.append(" WHERE sno=? ");            
+            
+    	    pstmt=con.prepareStatement(sql.toString());
+    	    pstmt.setString(1, dto.getUname());
+    	    pstmt.setInt(2, dto.getKor());
+    	    pstmt.setInt(3, dto.getEng());
+    	    pstmt.setInt(4, dto.getMat());
+    	    pstmt.setInt(5, dto.getAver());
+    	    pstmt.setString(6, dto.getAddr());
+    	    pstmt.setInt(7, dto.getSno());           
+            
+    	    cnt=pstmt.executeUpdate();    	    
+            
+        }catch (Exception e) {
+            System.out.println("수정 실패:" + e);
+        }finally {
+            DBClose.close(con, pstmt);
+        }//end
+        return cnt;
+    }//updateProc() end
+
 }//class end
