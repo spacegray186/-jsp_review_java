@@ -21,4 +21,4 @@ public class DBOpen {
         return con;
     }//getConnection() end
     
-}//class endd
+}//class end
