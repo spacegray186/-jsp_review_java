@@ -9,7 +9,7 @@ import net.utility.DBClose;
 import net.utility.DBOpen;
 
 public class SungjukDAO { //Data Access Object
-                          //데이터베이스 관련 비지니스 로직 구현
+                          //데이터베이스 관련 비즈니스 로직 구현
     private DBOpen dbopen=null;
     private Connection con=null;
     private PreparedStatement pstmt=null;
@@ -41,7 +41,7 @@ public class SungjukDAO { //Data Access Object
             cnt=pstmt.executeUpdate();
             
         }catch (Exception e) {
-            System.out.println("행추가 실패:" + e);
+            System.out.println("행추가 실패 : " + e);
         }finally {
             DBClose.close(con, pstmt);
         }//end
@@ -69,7 +69,7 @@ public class SungjukDAO { //Data Access Object
             cnt=pstmt.executeUpdate();
             
         }catch (Exception e) {
-            System.out.println("행추가 실패:" + e);
+            System.out.println("행추가 실패 : " + e);
         }finally {
             DBClose.close(con, pstmt);
         }//end
@@ -111,7 +111,7 @@ public class SungjukDAO { //Data Access Object
             }//if end
             
         }catch (Exception e) {
-            System.out.println("목록실패:" + e);
+            System.out.println("목록실패 : " + e);
         }finally {
             DBClose.close(con, pstmt, rs);
         }//end
@@ -148,7 +148,7 @@ public class SungjukDAO { //Data Access Object
             }//if end
             
         }catch (Exception e) {
-            System.out.println("상세보기실패:" + e);
+            System.out.println("상세보기 실패 : " + e);
         }finally {
             DBClose.close(con, pstmt, rs);
         }//end
@@ -171,7 +171,7 @@ public class SungjukDAO { //Data Access Object
             cnt=pstmt.executeUpdate();
             
         }catch (Exception e) {
-            System.out.println("삭제실패:" + e);
+            System.out.println("삭제 실패 : " + e);
         }finally {
             DBClose.close(con, pstmt);
         }//end
@@ -201,7 +201,7 @@ public class SungjukDAO { //Data Access Object
     	    cnt=pstmt.executeUpdate();    	    
             
         }catch (Exception e) {
-            System.out.println("수정 실패:" + e);
+            System.out.println("수정 실패 : " + e);
         }finally {
             DBClose.close(con, pstmt);
         }//end
